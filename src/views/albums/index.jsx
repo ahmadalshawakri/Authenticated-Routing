@@ -1,10 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Gallery from './components/Gallery';
 import { AlbumService, PhotoService } from './services';
 import { UserContext } from '../../context';
 
 const Albums = () => {
+  const navigate = useNavigate();
   const [photos, setPhotos] = useState([]);
   const { currentUser } = useContext(UserContext);
 
@@ -33,7 +35,8 @@ const Albums = () => {
       <h1
         style={{
           color: 'blue',
-        }}>
+        }}
+        onClick={() => navigate('./photo')}>
         Photos
       </h1>
       <Gallery photos={photos} />
